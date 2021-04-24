@@ -11,7 +11,8 @@ crate_ver=0.9.61
 
 cat <<EOF >> Cargo.toml
 [patch.crates-io]
-openssl-sys = { path = "vendor/openssl-sys-$crate_ver" }
+openssl-sys = { version = "0.9.61", path = "vendor/openssl-sys-$crate_ver" }
+
 EOF
 
 cargo build \
