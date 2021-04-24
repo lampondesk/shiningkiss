@@ -1,19 +1,22 @@
 #!/bin/sh -e
 
-crate_ver=0.9.61
+#crate_ver=0.9.61
 
-(
-    cd vendor
-    tar xf openssl-sys-*.crate
-)
+#(
+#    cd vendor
+#    tar xf openssl-sys-*.crate
+#)
 
 #patch -p1 < libressl.patch
 
-cat <<EOF >> Cargo.toml
-[patch.crates-io]
-openssl-sys = { version = "0.9.61", path = "vendor/openssl-sys-$crate_ver" }
+#cat <<EOF >> Cargo.toml
+#[patch.crates-io]
+#openssl-sys = { version = "0.9.61", path = "vendor/openssl-sys-$crate_ver" }
 
-EOF
+#EOF
+
+# Risky, as dependencies could easily break. Can't think of other solution for now
+cargo update
 
 cargo build \
     --release \
